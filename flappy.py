@@ -17,24 +17,39 @@ IMAGES, SOUNDS, HITMASKS = {}, {}, {}
 
 # list of all possible players (tuple of 3 positions of flap)
 PLAYERS_LIST = (
-    # red bird
+    # reimu
     (
-        'assets/sprites/redbird-upflap.png',
-        'assets/sprites/redbird-midflap.png',
-        'assets/sprites/redbird-downflap.png',
+        'assets/sprites/reimu_0.png',
+        'assets/sprites/reimu_1.png',
+        'assets/sprites/reimu_2.png',
+        'assets/sprites/reimu_3.png',
+        'assets/sprites/reimu_4.png',
+        'assets/sprites/reimu_5.png',
+        'assets/sprites/reimu_6.png',
+        'assets/sprites/reimu_7.png',
     ),
-    # blue bird
+    # sanae
     (
         # amount by which base can maximum shift to left
-        'assets/sprites/bluebird-upflap.png',
-        'assets/sprites/bluebird-midflap.png',
-        'assets/sprites/bluebird-downflap.png',
+        'assets/sprites/sanae_0.png',
+        'assets/sprites/sanae_1.png',
+        'assets/sprites/sanae_2.png',
+        'assets/sprites/sanae_3.png',
+        'assets/sprites/sanae_4.png',
+        'assets/sprites/sanae_5.png',
+        'assets/sprites/sanae_6.png',
+        'assets/sprites/sanae_7.png',
     ),
-    # yellow bird
+    # marisa
     (
-        'assets/sprites/yellowbird-upflap.png',
-        'assets/sprites/yellowbird-midflap.png',
-        'assets/sprites/yellowbird-downflap.png',
+        'assets/sprites/marisa_0.png',
+        'assets/sprites/marisa_1.png',
+        'assets/sprites/marisa_2.png',
+        'assets/sprites/marisa_3.png',
+        'assets/sprites/marisa_4.png',
+        'assets/sprites/marisa_5.png',
+        'assets/sprites/marisa_6.png',
+        'assets/sprites/marisa_7.png',
     ),
 )
 
@@ -62,7 +77,7 @@ def main():
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
     SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
-    pygame.display.set_caption('Flappy Bird')
+    pygame.display.set_caption('Flappy Touhou')
 
     # numbers sprites for score display
     IMAGES['numbers'] = (
@@ -89,7 +104,7 @@ def main():
     if 'win' in sys.platform:
         soundExt = '.wav'
     else:
-        soundExt = '.ogg'
+        soundExt = '.wav'
 
     SOUNDS['die']    = pygame.mixer.Sound('assets/audio/die' + soundExt)
     SOUNDS['hit']    = pygame.mixer.Sound('assets/audio/hit' + soundExt)
@@ -258,7 +273,7 @@ def mainGame(movementInfo):
                 SOUNDS['point'].play()
 
         # playerIndex basex change
-        if (loopIter + 1) % 3 == 0:
+        if (loopIter + 1) % 8 == 0:
             playerIndex = next(playerIndexGen)
         loopIter = (loopIter + 1) % 30
         basex = -((-basex + 100) % baseShift)
